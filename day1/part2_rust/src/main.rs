@@ -52,7 +52,7 @@ fn main() {
         for line in lines.flatten() {
             let mut pair = Pair::default();
             for i in 0..line.len() {
-                pair.insert(rec_search(&line[i..], &hm));
+                pair.insert(search(&line[i..], &hm));
             }
 
             result += pair.sum();
@@ -62,7 +62,7 @@ fn main() {
     println!("{result}");
 }
 
-fn rec_search(substr: &str, hm: &HashMap<&str, i32>) -> Option<i32> {
+fn search(substr: &str, hm: &HashMap<&str, i32>) -> Option<i32> {
     for c in substr.chars() {
         if c.is_numeric() {
             let c = c.to_digit(10).unwrap().try_into().unwrap();
